@@ -1,0 +1,583 @@
+*{
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body{
+    background-color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
+}
+
+.Drawer{
+    font-family: "Press Start 2P", cursive, sans-serif;
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: black;
+    width: 30px;
+    height: 25px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    z-index: 89;
+}
+.Drawer.drag{
+    top: 150px;
+}
+
+.dropDown{
+    font-family: "Press Start 2P", cursive, sans-serif;
+    position: fixed;
+    top: -150px;
+    width: 100%;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 999;
+}
+.dropDown.open{
+    top: 0px;
+}
+.acc{
+    width: 100%;
+    height: 50px;
+    padding: 7px;
+    font-size: 1.5em;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+      clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+
+.acc:hover{
+    background-color: rgb(61, 61, 61);
+}
+
+.container{
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(240, 248, 255, 0);
+    display: flex;
+    z-index: 1;
+}
+
+.SpentCont{
+    width: 50%;
+    height: 20%;
+    background-color: rgba(0, 79, 149, 0);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.Spent,.Saved{
+    position: relative;
+    right: -27%;
+    width: 62%;
+    height: 90%;
+    z-index: 5;
+    transition: all 0.4s ease;
+    display: flex;
+    gap: 17px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0);
+    font-size: 20px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+.Spent p{
+    margin: 0;
+    color: #FF6961;
+}
+.Saved p{
+    margin: 0;
+    color: #F99D46;
+}
+.Spent.SpentTrans{
+    background: rgba(0, 100, 150, 0.08);
+    color: white;
+    right: 35%;
+    width: 52%;
+    height: 70%;
+}
+.SavedCont{
+    width: 50%;
+    height: 20%;
+    background-color: rgba(68, 63, 95, 0);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.Saved{
+    position: relative;
+    left: -27%;
+}
+.Saved.SavedTrans{
+    background: rgba(0, 100, 150, 0.08);
+    color: white;
+    left: 35%;
+    width: 52%;
+    height: 70%;
+}
+.BalCont{
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(250, 235, 215, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Balance{
+    width: 40%;
+    height: 80%;
+    z-index: 5;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    justify-content: center;
+    align-items: center;
+    color: #8D9B66;
+    font-size: 20px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+.Balance p{
+    margin: 0;
+}
+.Balance::before{
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: -50px;
+    right: 0;
+    height: 130px;
+    background:  no-repeat;
+    background-size: 120px 120px;
+}
+.Balance.BalTrans{
+    background: 
+     bottom left repeat-y;
+    background-size: 80px 80px;
+    width: 26%;
+    height: 70%;
+}
+.Balance.BalTrans::before{
+    top: -20px;
+    left: -20px;
+    background:  no-repeat;
+    background-size: 50px 50px;
+}
+.addBtn{
+    border: none;
+    outline: none;
+    position: fixed;
+    left: 100px;
+    top: 20px;
+    background: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    height: 40px;
+    width: 40px;
+    font-size: 30px;
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+}
+
+.addBtn:active{
+    cursor: grabbing;
+}
+.glassCont{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      z-index: 1000;
+}
+.glass {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 200px;
+    background: rgba(0, 100, 150, 0.08);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    overflow: hidden;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1000;
+    font-size: 20px;
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+  }
+  .glass-CAT{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    backdrop-filter: none;
+  }
+  .glass.Calc{
+    height: 450px;
+  }
+  .Categories{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+.cats{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+.cats:hover{
+    background-color: rgb(50, 50, 50);
+}
+#BalCat{
+    color: #8D9B66;
+}
+#SpentCat{
+    color: #FF6961;
+}
+#SavedCat{
+    color: #F99D46;
+}
+.Title{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+#titleInput{
+    padding: 10px;
+    width: 300px;
+    height: 40px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+#titleInput::placeholder, #calcDisplay::placeholder{
+    color: #ffffffa8;
+    opacity: 0.8;
+    font-size: 15px;
+    font-weight: 600;
+}
+#titleInput:not(:placeholder-shown){
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.NextBtn1,.NextBtn2{
+    padding: 5px;
+    width: 70px;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+.NextBtn1:hover,.NextBtn2:hover{
+    background-color: rgb(50, 50, 50);
+}
+.Amount{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.Calculator{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.calcDisplay{
+    padding: 10px;
+    width: 220px;
+    height: 40px;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+.calc-btn{
+    width: 45px;
+    height: 45px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+}
+.calc-btn:hover{
+    background-color: rgb(50, 50, 50);
+}
+.FinalReview{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 300px;
+}
+.EditCat,.EditAmount,.EditTitle,.EditDate{
+    padding: 7px;
+    width: 100%;
+    height: 40px;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+
+.EditDate{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+.Confirm{
+    padding: 5px;
+    width: 70px;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+.Confirm:hover{
+    background-color: rgb(50, 50, 50);
+}
+.EnBase{
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    height: 70%;
+    background: rgba(0, 0, 0, 0.199);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 80;
+}
+.EntryBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 0px;
+}
+.EntryDate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    font-size: 20px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+.subOptions{
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.EntryDate .heading{
+    margin: 0;
+}
+.EntryDate .Minimize{
+    margin: 0;
+    padding: 0%;
+}
+.EntryDate .addTo{
+    margin: 0;
+    padding: 0%;
+}
+.BSSEntry{
+    background-color: rgb(0, 0, 0);
+    border-bottom: 2px solid white;
+    color: rgb(255, 255, 255);
+    font-family: "Press Start 2P", cursive, sans-serif;
+    width: 96%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.BSSEntry-hide{
+    display: none;
+}
+.Entries-Balance,.Entries-Spent,.Entries-Saved{
+    width: 100%;
+    height: auto;
+    display: flex;
+    font-size: 20px;
+}
+.Entries-clicked{
+    background-color: rgb(32, 32, 32);
+}
+.HoldTitle{
+    width: 50%;
+    text-align: left;
+}
+.HoldAmount{
+    width: 50%;
+    text-align: right;
+}
+.HoldBtn{
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    gap: 7px;
+}
+.HoldBtn-vis{
+    display: flex;
+}
+.editBtn,.deleteBtn{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    clip-path: polygon(
+    15px 0, calc(100% - 15px) 0,
+    100% 15px, 100% calc(100% - 15px),
+    calc(100% - 10px) 100%, 10px 100%,
+    0 calc(100% - 10px), 0 15px);
+}
+.editBtn:hover,.deleteBtn:hover{
+    background-color: rgb(46, 46, 46);
+}
+#liveResult{
+    position: relative;
+    left: 40%;
+}
+#empTy{
+    padding: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100vh;
+    transform: translate(-50%,-50%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-family: "Press Start 2P", cursive, sans-serif;
+    text-align: center;
+}

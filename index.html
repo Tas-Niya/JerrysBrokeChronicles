@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>expensetrackerpage1</title>
+    <link rel="stylesheet" href="2style1.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8D9B66">
+</head>
+<body>
+    <div class="Drawer" id="Drawer">
+        ☰
+    </div>
+
+    <div class="dropDown" id="dropDown">
+        <div class="acc" id="acc1">Balance</div>
+        <div class="acc" id="acc2">Secret Stash</div>
+    </div>
+    
+    <div class="container">
+        
+        <div class="SpentCont">
+            <div class="Spent" id="Spent">
+                <p>Spent</p>
+                <p id="DisplaySpent">৳0</p>
+            </div>
+        </div>
+        <div class="SavedCont">
+            <div class="Saved" id="Saved">
+                <p>Hoarded</p>
+                <p id="DisplaySaved">৳0</p>
+            </div>
+        </div>
+        
+    </div>
+    <div class="BalCont">
+        <div class="Balance" id="Balance">
+            <p>Balance</p>
+            <p id="DisplayBal">৳0</p>
+        </div>
+    </div>
+    <div class="EnBase" id="EnBase">
+    </div>
+    <button class="addBtn" id="addBtn">+</button>
+
+    <div class="empTy" id="empTy"><p>Nothing Here</p></div>
+
+    <div class="glassCont" id="glassCont">
+        <div class="glass" id="glass">
+            <div class="Categories" id="Categories">
+            <button class="cats" id="BalCat">Balance+</button>
+            <button class="cats" id="SpentCat">Spent+</button>
+            <button class="cats" id="SavedCat">Saved+</button>
+            </div>
+            <div class="Title" id="Title">
+                <input type="text" id="titleInput" placeholder="Title" maxlength="40" required>
+                <br>
+                <button class="NextBtn1" id="NextBtn1" type="submit">Next</button>
+            </div>
+            <div class="Amount" id="Amount">
+                <div><input class="calcDisplay" id="calcDisplay" readonly>
+                <div id="liveResult">৳0</div></div>
+                <div class="Calculator" id="Calculator">
+                    <button class="calc-btn" onclick="clearAmount()">C</button>
+                    <button class="calc-btn" onclick="pressNum('.')">.</button>
+                    <button class="calc-btn" onclick="deleteLast()">⌫</button>
+                    <button class="calc-btn" onclick="pressNum('/')">÷</button>
+                    <button class="calc-btn" onclick="pressNum('7')">7</button>
+                    <button class="calc-btn" onclick="pressNum('8')">8</button>
+                    <button class="calc-btn" onclick="pressNum('9')">9</button>
+                    <button class="calc-btn" onclick="pressNum('*')">×</button>
+                    <button class="calc-btn" onclick="pressNum('4')">4</button>
+                    <button class="calc-btn" onclick="pressNum('5')">5</button>
+                    <button class="calc-btn" onclick="pressNum('6')">6</button>
+                    <button class="calc-btn" onclick="pressNum('-')">-</button>
+                    <button class="calc-btn" onclick="pressNum('1')">1</button>
+                    <button class="calc-btn" onclick="pressNum('2')">2</button>
+                    <button class="calc-btn" onclick="pressNum('3')">3</button>
+                    <button class="calc-btn" onclick="pressNum('+')">+</button>
+                    <button class="calc-btn" onclick="pressNum('0')">0</button>
+                    <button class="calc-btn" onclick="pressNum('00')">00</button>
+                    <button class="calc-btn" onclick="pressNum('000')">000</button>
+                    <button class="calc-btn" onclick="calcuLate()">=</button>
+                </div>
+                <button class="NextBtn2" id="NextBtn2">Next</button>
+            </div>
+            <div class="FinalReview" id="FinalReview">
+                <select class="EditCat" id="EditCat">
+                    <option value="Balance">Balance</option>
+                    <option value="Spent">Spent</option>
+                    <option value="Saved">Saved</option>
+                </select>
+                <input class="EditAmount" id="EditAmount" readonly>
+                <input class="EditTitle" id="EditTitle">
+                <input type="date" class="EditDate" id="EditDate">
+                <button class="Confirm" id="Confirm">Confirm</button>
+            </div>
+    </div>
+    </div>
+    
+    
+    <script src="3PAGE1.js"></script>
+</body>
+</html>
